@@ -8,16 +8,19 @@ let application;
 const GRAMS = {
   grams: [{
     id: 1,
-    title: 'Gram 1',
-    likes: 5
+    image: 'http://placekitten.com/300/300',
+    likes: 5,
+    title: 'Gram 1'
   }, {
     id: 2,
-    title: 'Gram 2',
-    likes: 10
+    image: 'http://placehold.it/300x300/eee',
+    likes: 10,
+    title: 'Gram 2'
   }, {
     id: 3,
-    title: 'Gram 3',
-    likes: 15
+    image: 'http://placehold.it/300x300/bbb',
+    likes: 15,
+    title: 'Gram 3'
   }]
 };
 
@@ -49,6 +52,9 @@ test('visiting feed shows 3 grams', function(assert) {
 
     const firstGramTitle = find('.gram:eq(0) .gram__title');
     assert.equal(firstGramTitle.text(), 'Gram 1');
+
+    const firstGramPhoto = find('.gram:eq(0) .gram__figure img');
+    assert.equal(firstGramPhoto.attr('src'), 'http://placekitten.com/300/300');
   });
 });
 

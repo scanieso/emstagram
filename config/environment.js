@@ -19,6 +19,7 @@ module.exports = function(environment) {
     },
 
     contentSecurityPolicy: {
+      'img-src': "'self' placeholdit.imgix.net placehold.it placekitten.com",
       'style-src': "'self' 'unsafe-inline'"
     }
   };

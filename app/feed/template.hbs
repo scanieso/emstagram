@@ -3,6 +3,9 @@
 <ul class="grams">
   {{#each grams as |gram|}}
   <li class="gram">
+    <figure class="gram__figure">
+      <img src="{{gram.image}}" alt="Photo of {{gram.title}}">
+    </figure>
     <h3 class="gram__title">{{gram.title}}</h3>
     <button class="gram__toggle-like" {{action "toggleLike" gram}}>Toggle like</button>
     <span class="gram__likes">{{gram.likes}}</span>
