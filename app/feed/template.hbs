@@ -1,0 +1,13 @@
+<h2>Grams</h2>
+
+<ul class="grams">
+  {{#each grams as |gram|}}
+  <li class="gram">
+    <h3 class="gram__title">{{gram.title}}</h3>
+    <button class="gram__toggle-like" {{action "toggleLike" gram}}>Toggle like</button>
+    <span class="gram__likes">{{gram.likes}}</span>
+  </li>
+  {{/each}}
+</ul>
+
+{{outlet}}
