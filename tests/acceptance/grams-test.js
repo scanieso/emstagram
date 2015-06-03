@@ -45,7 +45,7 @@ test('visiting feed shows 3 grams', function(assert) {
   visit('/');
 
   andThen(function() {
-    assert.equal(currentPath(), 'feed');
+    assert.equal(currentPath(), 'grams.index');
 
     const grams = find('.gram');
     assert.equal(grams.length, 3);
@@ -71,5 +71,15 @@ test('clicking like button will increment the gram\'s like count', function(asse
   andThen(function() {
     const firstGramLikes = find('.gram:eq(0) .gram__likes');
     assert.equal(firstGramLikes.text(), 6);
+  });
+});
+
+test('user can navigate to new gram route', function(assert) {
+  visit('/');
+
+  click('#button-new-gram');
+
+  andThen(function() {
+    assert.equal(currentPath(), 'grams.new');
   });
 });

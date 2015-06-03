@@ -6,13 +6,13 @@ module.exports = function(app) {
     res.send({
       'grams': [{
         id: 1,
-        title: 'My Gram 1'
+        title: 'My photo 1'
       }, {
         id: 2,
-        title: 'Another cool gram'
+        title: 'Another cool photo'
       }, {
         id: 3,
-        title: 'Someone\'s gram here'
+        title: 'Someone else\'s photo here'
       }]
     });
   });

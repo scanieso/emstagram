@@ -6,7 +6,9 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('feed', { path: '/' });
+  this.route('grams', { path: '/' }, function() {
+    this.route('new');
+  });
 });
 
 export default Router;

@@ -1,6 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('route:feed', 'Unit | Route | feed', {
+moduleFor('route:grams', 'Unit | Route | grams', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
 });
