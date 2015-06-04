@@ -4,6 +4,7 @@ import startApp from 'emstagram/tests/helpers/start-app';
 import Pretender from 'pretender';
 
 let application;
+let server;
 
 const GRAMS = {
   grams: [{
@@ -24,12 +25,11 @@ const GRAMS = {
   }]
 };
 
-const server = new Pretender();
-
 module('Acceptance | feed', {
   beforeEach: function() {
     application = startApp();
 
+    server = new Pretender();
     server.get('/api/grams', function(request) {
       const json = JSON.stringify(GRAMS);
       return [200, { 'Content-Type': 'application/json' }, json];
@@ -38,15 +38,14 @@ module('Acceptance | feed', {
 
   afterEach: function() {
     Ember.run(application, 'destroy');
+    server.shutdown();
   }
 });
 
 test('visiting feed shows 3 grams', function(assert) {
-  visit('/');
+  visit('/grams');
 
   andThen(function() {
-    assert.equal(currentPath(), 'grams.index');
-
     const grams = find('.gram');
     assert.equal(grams.length, 3);
 
@@ -59,7 +58,7 @@ test('visiting feed shows 3 grams', function(assert) {
 });
 
 test('clicking like button will increment the gram\'s like count', function(assert) {
-  visit('/');
+  visit('/grams');
 
   andThen(function() {
     const firstGramLikes = find('.gram:eq(0) .gram__likes');
@@ -75,7 +74,7 @@ test('clicking like button will increment the gram\'s like count', function(asse
 });
 
 test('user can navigate to new gram route', function(assert) {
-  visit('/');
+  visit('/grams');
 
   click('#button-new-gram');
 

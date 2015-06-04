@@ -21,6 +21,10 @@ module.exports = function(environment) {
     contentSecurityPolicy: {
       'img-src': "'self' placeholdit.imgix.net placehold.it placekitten.com",
       'style-src': "'self' 'unsafe-inline'"
+    },
+
+    'simple-auth': {
+      authorizer: 'simple-auth-authorizer:devise'
     }
   };
 
@@ -42,6 +46,10 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+
+    ENV['simple-auth'] = {
+      store: 'simple-auth-session-store:ephemeral'
+    };
   }
 
   if (environment === 'production') {

@@ -6,7 +6,9 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('grams', { path: '/' }, function() {
+  this.route('login');
+
+  this.route('grams', function() {
     this.route('new');
   });
 });

@@ -1,3 +1,15 @@
 <h1>Emstagram</h1>
 
+<nav class="app-nav" role="navigation">
+  <ul>
+    <li>
+      {{#if session.isAuthenticated}}
+        <a {{action "invalidateSession"}}>Logout</a>
+      {{else}}
+        {{#link-to "login" class="login"}}Login{{/link-to}}
+      {{/if}}
+    </li>
+  </ul>
+</nav>
+
 {{outlet}}
