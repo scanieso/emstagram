@@ -6,7 +6,7 @@ import Pretender from 'pretender';
 let application, server;
 
 module('Acceptance | authentication', {
-  beforeEach: function() {
+  beforeEach() {
     application = startApp();
     server = new Pretender();
     server.get('/api/grams', function() {
@@ -14,7 +14,7 @@ module('Acceptance | authentication', {
     });
   },
 
-  afterEach: function() {
+  afterEach() {
     Ember.run(application, 'destroy');
     server.shutdown();
   }

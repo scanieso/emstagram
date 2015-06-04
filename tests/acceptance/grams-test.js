@@ -28,7 +28,7 @@ const GRAMS = {
 };
 
 module('Acceptance | grams', {
-  beforeEach: function() {
+  beforeEach() {
     application = startApp();
 
     server = new Pretender();
@@ -38,7 +38,7 @@ module('Acceptance | grams', {
     });
   },
 
-  afterEach: function() {
+  afterEach() {
     Ember.run(application, 'destroy');
     server.shutdown();
   }
