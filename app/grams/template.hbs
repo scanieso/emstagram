@@ -1,10 +1,9 @@
 <h2>Grams</h2>
 
-{{#link-to 'grams.new' id="button-new-gram"}}Add gram{{/link-to}}
-
 <ul class="grams">
   {{#each grams as |gram|}}
   <li class="gram">
+    <span class="gram__username">{{gram.user}}</span>
     <figure class="gram__figure">
       <img src="{{gram.image}}" alt="Photo of {{gram.title}}">
     </figure>

@@ -1,4 +1,8 @@
 <form {{action "authenticate" on="submit"}}>
+  {{#if loginErrorMessage}}
+    <span class="error">Error here</span>
+  {{/if}}
+
   <label for="login-identification">Email</label>
   {{input id="login-identification" value=identification placeholder="Enter email"}}
 

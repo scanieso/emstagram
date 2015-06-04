@@ -6,13 +6,22 @@ module.exports = function(app) {
     res.send({
       'grams': [{
         id: 1,
-        title: 'My photo 1'
+        image: 'http://placehold.it/300x300/eee',
+        likes: 5,
+        title: 'My photo 1',
+        user: 'scanieso'
       }, {
         id: 2,
-        title: 'Another cool photo'
+        image: 'http://placehold.it/300x300/eee',
+        likes: 5,
+        title: 'Another cool photo',
+        user: 'scanieso'
       }, {
         id: 3,
-        title: 'Someone else\'s photo here'
+        image: 'http://placehold.it/300x300/eee',
+        likes: 5,
+        title: 'Someone else\'s photo here',
+        user: 'harrypotter'
       }]
     });
   });
