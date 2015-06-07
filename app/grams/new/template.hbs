@@ -1,0 +1,6 @@
+<form {{action "createGram" on="submit"}} id="new-gram-form">
+  {{#link-to 'grams' class="cancel-button"}}Cancel{{/link-to}}
+
+  {{input name="image" value=image}}
+  <button disabled={{isDisabled}} type="submit">Create a gram</button>
+</form>

@@ -7,19 +7,20 @@ module.exports = function(app) {
       'grams': [{
         id: 1,
         image: 'http://placehold.it/300x300/eee',
-        likes: 5,
+        liked: true,
+        likesCount: 5,
         title: 'My photo 1',
         user: 'scanieso'
       }, {
         id: 2,
         image: 'http://placehold.it/300x300/eee',
-        likes: 5,
+        likesCount: 5,
         title: 'Another cool photo',
         user: 'scanieso'
       }, {
         id: 3,
         image: 'http://placehold.it/300x300/eee',
-        likes: 5,
+        likesCount: 5,
         title: 'Someone else\'s photo here',
         user: 'harrypotter'
       }]

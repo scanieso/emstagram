@@ -1,0 +1,13 @@
+<span class="gram__username">{{gram.user}}</span>
+<figure class="gram__figure">
+  <img src="{{gram.image}}" alt="Photo of {{gram.title}}">
+</figure>
+<h3 class="gram__title">{{gram.title}}</h3>
+
+<button class="gram__toggle-like" {{action "toggleLike"}}>
+  <span class="gram__liked">{{likeText}}</span>
+</button>
+
+<span class="gram__likes">{{gram.likes}}</span>
+
+{{yield}}

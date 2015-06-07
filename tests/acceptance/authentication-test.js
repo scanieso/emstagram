@@ -3,7 +3,7 @@ import { module, test } from 'qunit';
 import startApp from 'emstagram/tests/helpers/start-app';
 import Pretender from 'pretender';
 
-let application, server;
+let application, server, originalException;
 
 module('Acceptance | authentication', {
   beforeEach() {
@@ -12,9 +12,14 @@ module('Acceptance | authentication', {
     server.get('/api/grams', function() {
       return [200, { 'Content-Type': 'application/json' }, '{ "grams": [] }'];
     });
+
+    originalException = Ember.Test.adapter.exception;
+    Ember.Test.adapter.exception = function() {};
   },
 
   afterEach() {
+    Ember.Test.adapter.exception = originalException;
+
     Ember.run(application, 'destroy');
     server.shutdown();
   }
@@ -45,11 +50,11 @@ test('user can log in', function(assert) {
 });
 
 test('user gets error when they use wrong password', function(assert) {
-  visit('/');
+  visit('/grams');
 
   server.post('/users/sign_in', function(request) {
     const response = JSON.stringify({ message: 'invalid_grant' });
-    return [400, { 'Content-Type': 'application/json' }, response];
+    return [401, { 'Content-Type': 'application/json' }, response];
   });
 
   visit('/login');
@@ -80,6 +85,6 @@ test('a protected route is not accessible when the session is not authenticated'
   visit('/grams/new');
 
   andThen(function() {
-    assert.equal(currentPath() !== 'grams.new', true);
+    assert.notEqual(currentPath(), 'grams.new');
   });
 });

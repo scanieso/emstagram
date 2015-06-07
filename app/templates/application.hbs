@@ -2,6 +2,11 @@
 
 <nav class="app-nav" role="navigation">
   <ul>
+    {{#if session.isAuthenticated}}
+    <li>
+      {{#link-to 'grams.new' class="new-gram-button"}}Add New Gram{{/link-to}}
+    </li>
+    {{/if}}
     <li>
       {{#if session.isAuthenticated}}
         <a {{action "invalidateSession"}}>Logout</a>

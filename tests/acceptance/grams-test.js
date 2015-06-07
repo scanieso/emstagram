@@ -8,20 +8,23 @@ let application, server;
 const GRAMS = {
   grams: [{
     id: 1,
-    image: 'http://placekitten.com/300/300',
-    likes: 5,
+    image: 'http://placehold.it/300x300',
+    liked: true,
+    likesCount: 5,
     title: 'Gram 1',
     user: 'user_1'
   }, {
     id: 2,
-    image: 'http://placehold.it/300x300/eee',
-    likes: 10,
+    image: 'http://placehold.it/300x300',
+    liked: false,
+    likesCount: 10,
     title: 'Gram 2',
     user: 'user_1'
   }, {
     id: 3,
-    image: 'http://placehold.it/300x300/bbb',
-    likes: 15,
+    image: 'http://placehold.it/300x300',
+    liked: false,
+    likesCount: 15,
     title: 'Gram 3',
     user: 'user_1'
   }]
@@ -36,6 +39,10 @@ module('Acceptance | grams', {
       const response = JSON.stringify(GRAMS);
       return [200, { 'Content-Type': 'application/json' }, response];
     });
+
+    server.post('/api/grams', function(request) {
+      return [201, { 'Content-Type': 'application/json' }, request.requestBody];
+    });
   },
 
   afterEach() {
@@ -44,36 +51,83 @@ module('Acceptance | grams', {
   }
 });
 
+test('visiting index redirects to grams', function(assert) {
+  visit('/');
+
+  andThen(function() {
+    assert.equal(currentPath(), 'grams.index');
+  });
+});
+
 test('visiting /grams shows 3 grams', function(assert) {
   visit('/grams');
 
   andThen(function() {
     const grams = find('.gram');
-    assert.equal(grams.length, 3);
+    assert.equal(grams.length, 3, 'there are 3 grams');
 
     const firstGramTitle = find('.gram:eq(0) .gram__title');
-    assert.equal(firstGramTitle.text(), 'Gram 1');
-
-    const firstGramPhoto = find('.gram:eq(0) .gram__figure img');
-    assert.equal(firstGramPhoto.attr('src'), 'http://placekitten.com/300/300');
-
-    const firstGramUsername = find('.gram:eq(0) .gram__username');
-    assert.equal(firstGramUsername.text(), 'user_1');
+    assert.equal(firstGramTitle.text(), 'Gram 1', 'the title of the first gram is "Gram 1"');
   });
 });
 
-test('user can increment like count', function(assert) {
+test('user can like a gram', function(assert) {
+  authenticateSession();
   visit('/grams');
 
   andThen(function() {
-    const firstGramLikes = find('.gram:eq(0) .gram__likes');
-    assert.equal(firstGramLikes.text(), 5);
+    const like = find('.gram:eq(0) .gram__liked');
+    console.log(find('.gram__liked').text());
+    assert.equal(like.text(), 'Liked', 'liked gram\'s like button displays with text "Liked"');
   });
 
   click('.gram:eq(0) .gram__toggle-like');
 
   andThen(function() {
-    const firstGramLikes = find('.gram:eq(0) .gram__likes');
-    assert.equal(firstGramLikes.text(), 6);
+    const like = find('.gram:eq(0) .gram__liked');
+    assert.equal(like.text(), 'Like', 'unliked gram\'s like button displays with text "Like"');
+  });
+});
+
+test('user can add new gram', function(assert) {
+  authenticateSession();
+
+  visit('/grams');
+  andThen(function() {
+    const grams = find('.gram');
+    assert.equal(grams.length, 3, 'page starts off with 3 grams');
+  });
+
+  click('.new-gram-button');
+
+  andThen(function() {
+    assert.equal(currentPath(), 'grams.new', 'user goes to /grams/new');
+
+    const backButton = find('.cancel-button');
+    assert.equal(backButton.length, 1, 'user can cancel adding new gram');
+  });
+
+  fillIn('#new-gram-form [name="image"]', 'http://placehold.it/300x300');
+  click('#new-gram-form button[type="submit"]');
+
+  andThen(function() {
+    const grams = find('.gram');
+    assert.equal(grams.length, 4, 'page now shows 4 grams');
+  });
+});
+
+test('user fails to add new gram', function(assert) {
+  authenticateSession();
+
+  visit('/grams/new');
+
+  fillIn('#new-gram-form [name="image"]', '');
+  click('#new-gram-form button[type="submit"]');
+
+  andThen(function() {
+    const disabledSubmitButton = find('#new-gram-form button[type="submit"]:disabled');
+    assert.equal(disabledSubmitButton.length, 1, 'user cannot submit form');
+
+    assert.equal(currentPath(), 'grams.new', 'user is not redirected without valid input');
   });
 });

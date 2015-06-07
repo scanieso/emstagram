@@ -2,15 +2,7 @@
 
 <ul class="grams">
   {{#each grams as |gram|}}
-  <li class="gram">
-    <span class="gram__username">{{gram.user}}</span>
-    <figure class="gram__figure">
-      <img src="{{gram.image}}" alt="Photo of {{gram.title}}">
-    </figure>
-    <h3 class="gram__title">{{gram.title}}</h3>
-    <button class="gram__toggle-like" {{action "toggleLike" gram}}>Toggle like</button>
-    <span class="gram__likes">{{gram.likes}}</span>
-  </li>
+    {{gram-card class="gram" gram=gram tagName="li"}}
   {{/each}}
 </ul>
 

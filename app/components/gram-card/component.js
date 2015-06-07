@@ -1,0 +1,16 @@
+import Ember from 'ember';
+
+const { computed } = Ember;
+
+export default Ember.Component.extend({
+  likeText: computed('gram.liked', function() {
+    return this.get('gram.liked') ? 'Liked' : 'Like';
+  }),
+
+  actions: {
+    toggleLike() {
+      const liked = this.get('gram.liked');
+      this.set('gram.liked', !liked);
+    }
+  }
+});
