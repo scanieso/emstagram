@@ -24,6 +24,16 @@ test('it renders', function(assert) {
   assert.equal(component._state, 'inDOM');
 });
 
+test('showLikeButton is true if session is authenticated', function(assert) {
+  const component = this.subject();
+
+  component.set('isAuthenticated', true);
+  assert.equal(component.get('showLikeButton'), true);
+
+  component.set('isAuthenticated', false);
+  assert.equal(component.get('showLikeButton'), false);
+});
+
 test('likeText is "Liked" when liked, and "Like" when not liked', function(assert) {
   const component = this.subject();
   const gram = {};

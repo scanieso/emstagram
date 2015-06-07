@@ -7,6 +7,8 @@ export default Ember.Component.extend({
     return this.get('gram.liked') ? 'Liked' : 'Like';
   }),
 
+  showLikeButton: computed.alias('isAuthenticated'),
+
   actions: {
     toggleLike() {
       const liked = this.get('gram.liked');

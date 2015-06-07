@@ -77,7 +77,6 @@ test('user can like a gram', function(assert) {
 
   andThen(function() {
     const like = find('.gram:eq(0) .gram__liked');
-    console.log(find('.gram__liked').text());
     assert.equal(like.text(), 'Liked', 'liked gram\'s like button displays with text "Liked"');
   });
 
