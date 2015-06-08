@@ -4,9 +4,11 @@
 </figure>
 <h3 class="gram__title">{{gram.title}}</h3>
 
+{{#if isAuthenticated}}
 <button class="gram__toggle-like" {{action "toggleLike"}}>
   <span class="gram__liked">{{likeText}}</span>
 </button>
+{{/if}}
 
 <span class="gram__likes">{{gram.likes}}</span>
 

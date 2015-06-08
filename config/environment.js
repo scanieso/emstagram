@@ -24,8 +24,7 @@ module.exports = function(environment) {
     },
 
     'simple-auth': {
-      authorizer: 'simple-auth-authorizer:devise',
-      routeAfterAuthentication: 'grams'
+      authorizer: 'simple-auth-authorizer:devise'
     }
   };
 

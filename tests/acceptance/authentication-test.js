@@ -27,7 +27,7 @@ module('Acceptance | authentication', {
 
 test('user can log in', function(assert) {
   server.post('/users/sign_in', function(request) {
-    const response = JSON.stringify({ access_token: 'access_token' });
+    const response = JSON.stringify({ token: 'fake_access_token' });
     return [200, { 'Content-Type': 'application/json' }, response];
   });
 

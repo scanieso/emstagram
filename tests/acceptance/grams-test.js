@@ -72,9 +72,14 @@ test('visiting /grams shows 3 grams', function(assert) {
 });
 
 test('user can like a gram', function(assert) {
-  authenticateSession();
   visit('/grams');
 
+  invalidateSession();
+  andThen(function() {
+    assert.equal(find('.gram:eq(0) .gram__toggle-like').length, 0, 'like buttons are not visible if not authenticated');
+  });
+
+  authenticateSession();
   andThen(function() {
     const like = find('.gram:eq(0) .gram__liked');
     assert.equal(like.text(), 'Liked', 'liked gram\'s like button displays with text "Liked"');

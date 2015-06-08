@@ -4,8 +4,6 @@ import { moduleForComponent, test } from 'ember-qunit';
 const get = Ember.get;
 const set = Ember.set;
 
-const { run } = Ember;
-
 moduleForComponent('gram-card', 'Unit | Component | gram card', {
   // Specify the other units that are required for this test
   // needs: ['component:foo', 'helper:bar']
@@ -51,9 +49,9 @@ test('toggleLike action toggles liked property', function(assert) {
   const gram = { liked: true };
   component.set('gram', gram);
 
-  run(function() {
-    component.send('toggleLike');
-  });
+  assert.equal(get(gram, 'liked'), true, 'liked starts as true');
 
-  assert.equal(get(gram, 'liked'), false);
+  component.send('toggleLike');
+
+  assert.equal(get(gram, 'liked'), false, 'liked gets toggled to false');
 });
