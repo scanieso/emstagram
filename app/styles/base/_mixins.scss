@@ -1,0 +1,96 @@
+// CSS3
+// ---------------------------------------
+
+@mixin opacity ($opacity) {
+  $opacityPercent: ($opacity * 100);
+  filter: alpha(opacity=$opacityPercent);
+  opacity: $opacity;
+}
+
+@mixin placeholder () {
+  ::-webkit-input-placeholder {
+    @content
+  }
+  :-moz-placeholder {
+    @content
+  }
+  ::-moz-placeholder {
+    @content
+  }
+  :-ms-input-placeholder {
+    @content
+  }
+}
+
+// Helpers
+// ---------------------------------------
+
+@mixin font-size ($size: 14, $parentSize: 16) {
+  font-size: $size + 0px;
+  font-size: 0rem + $size/$parentSize;
+}
+
+@mixin hidden () {
+  left: -9999px;
+  position: absolute;
+  top: -9999px;
+}
+
+@mixin icon ($icon) {
+  @extend [class^="icon-"]:before;
+  @extend .icon-#{$icon}:before;
+}
+
+@mixin image-replaced {
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+}
+
+@mixin list-clean () {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+@mixin retina () {
+  @media (min--moz-device-pixel-ratio: 1.5),
+         (-o-min-device-pixel-ratio: 3/2),
+         (-webkit-min-device-pixel-ratio: 1.5),
+         (min-device-pixel-ratio: 1.5),
+         (min-resolution: 144dpi),
+         (min-resolution: 1.5dppx) {
+    @content;
+  }
+}
+
+@mixin size ($width, $height: $width) {
+  height: $height + 0px;
+  width: $width + 0px;
+}
+
+@mixin text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin vertical-center () {
+  @include transform(translateY(-50%));
+  position: relative;
+  top: 50%;
+}
+
+@mixin vertical-rhythm ($value: $spacing-vertical) {
+  margin-top: $value + 0px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+@mixin visible () {
+  left: auto;
+  position: static;
+  top: auto;
+}

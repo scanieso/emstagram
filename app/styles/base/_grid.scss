@@ -1,0 +1,51 @@
+// Grid
+// ---------------------------------------
+$grid-num-columns: 12 !default;
+$grid-spacing: 20px !default;
+
+@mixin grid-row () {
+  @include vertical-rhythm;
+  @include clearfix;
+  margin-left: -$grid-spacing;
+}
+
+@mixin grid-column ($span: '') {
+  float: left;
+  min-height: 1px;
+  padding-left: $grid-spacing;
+
+  @if $span != '' {
+    @include grid-span($span);
+  }
+}
+
+@mixin grid-span ($span) {
+  width: (100%/$grid-num-columns * $span);
+}
+
+@mixin grid-offset ($offset) {
+  @include grid-column;
+  margin-left: 100%/$grid-num-columns * $offset;
+}
+
+$grid-classes: ();
+@for $i from 1 through ($grid-num-columns - 1) {
+  $grid-classes: join($grid-classes, unquote(".span#{$i}"), comma);
+  .span#{$i} {
+    @include grid-span($i);
+  }
+
+  .offset#{$i} {
+    @include grid-offset($i);
+  }
+}
+
+.row {
+  @include grid-row;
+
+  > {
+    #{$grid-classes} {
+      @include grid-column;
+    }
+  }
+}

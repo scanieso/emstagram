@@ -1,6 +1,7 @@
 {
   "name": "emstagram",
   "dependencies": {
+    "bourbon": "~4.2.3",
     "ember": "1.12.0",
     "ember-cli-shims": "ember-cli/ember-cli-shims#0.0.3",
     "ember-cli-test-loader": "ember-cli-test-loader#0.1.3",
@@ -9,10 +10,11 @@
     "ember-qunit": "0.3.3",
     "ember-qunit-notifications": "0.0.7",
     "ember-resolver": "~0.1.15",
+    "ember-simple-auth": "0.8.0-beta.2",
     "jquery": "^1.11.1",
     "loader.js": "ember-cli/loader.js#3.2.0",
-    "qunit": "~1.17.1",
+    "normalize": "modularized-normalize-scss#~3.0.3",
     "pretender": "^0.6.0",
-    "ember-simple-auth": "0.8.0-beta.2"
+    "qunit": "~1.17.1"
   }
 }

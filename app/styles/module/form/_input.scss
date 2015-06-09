@@ -1,0 +1,46 @@
+input {
+  -webkit-font-smoothing: antialiased;
+  font-family: inherit;
+  font-size: 100%;
+  max-width: 100%;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.input-text {
+  @include transition(all 0.2s);
+  background: #fff;
+  border: 1px solid $gray;
+  border-radius: 2px;
+  color: inherit;
+  display: inline-block;
+  margin: 0;
+  padding: 3px 10px;
+  vertical-align: middle;
+
+  &:focus {
+    outline: none;
+  }
+
+  &[disabled] {
+    opacity: 0.3;
+  }
+}
+
+@include placeholder {
+}
+
+::-webkit-outer-spin-button,
+::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+textarea {
+  overflow: auto;
+  max-width: 100%;
+  resize: vertical;
+  vertical-align: top;
+}

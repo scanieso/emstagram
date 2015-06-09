@@ -1,0 +1,36 @@
+select {
+  width: 100%;
+}
+
+.input-select-wrapper {
+  @extend .input-text;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+
+  &:after { // arrow
+    border: 5px solid transparent;
+    border-top-color: $color-body;
+    border-bottom: 0;
+    content: "";
+    margin-top: -2px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+  }
+}
+
+.input-select {
+  @include appearance(none);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  height: 2em;
+  line-height: 2em;
+  padding: 0 .5em;
+  width: 120%;
+
+  &:focus {
+    outline: none;
+  }
+}

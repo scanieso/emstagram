@@ -1,20 +1,28 @@
-<h1>Emstagram</h1>
+<header id="app-header" class="app-header" role="banner">
+  <div class="container">
+    <h1>Emstagram</h1>
 
-<nav class="app-nav" role="navigation">
-  <ul>
-    {{#if session.isAuthenticated}}
-    <li>
-      {{#link-to 'grams.new' class="new-gram-button"}}Add New Gram{{/link-to}}
-    </li>
-    {{/if}}
-    <li>
-      {{#if session.isAuthenticated}}
-        <a {{action "invalidateSession"}}>Logout</a>
-      {{else}}
-        {{#link-to "login" class="login"}}Login{{/link-to}}
-      {{/if}}
-    </li>
-  </ul>
-</nav>
+    <nav class="app-nav" role="navigation">
+      <ul>
+        {{#if session.isAuthenticated}}
+        <li>
+          {{#link-to 'grams.new' class="new-gram-button"}}Add New Gram{{/link-to}}
+        </li>
+        {{/if}}
+        <li>
+          {{#if session.isAuthenticated}}
+            <a class="button" {{action "invalidateSession"}}>Logout</a>
+          {{else}}
+            {{#link-to "login" class="login"}}Login{{/link-to}}
+          {{/if}}
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<!-- /#app-header -->
 
-{{outlet}}
+<div id="main" class="main" role="main">
+  {{outlet}}
+</div>
+<!-- /#main -->

@@ -1,0 +1,20 @@
+.media {
+  overflow: hidden;
+  zoom: 1;
+}
+
+.media__figure {
+  float: left;
+  margin: 0;
+  margin-right: em(10);
+
+  img {
+    display: block;
+  }
+}
+
+.media__body {
+  overflow: hidden;
+  _overflow: visible;
+  zoom: 1;
+}

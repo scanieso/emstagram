@@ -1,0 +1,55 @@
+  $139-x: 0px;
+  $139-y: 0px;
+  $139-offset-x: 0px;
+  $139-offset-y: 0px;
+  $139-width: 96px;
+  $139-height: 139px;
+  $139-total-width: 176px;
+  $139-total-height: 139px;
+  $139-image: '../images/layout/sprite.png';
+  $139: 0px 0px 0px 0px 96px 139px 176px 139px '../images/layout/sprite.png';
+  $40by40-x: 96px;
+  $40by40-y: 80px;
+  $40by40-offset-x: -96px;
+  $40by40-offset-y: -80px;
+  $40by40-width: 40px;
+  $40by40-height: 40px;
+  $40by40-total-width: 176px;
+  $40by40-total-height: 139px;
+  $40by40-image: '../images/layout/sprite.png';
+  $40by40: 96px 80px -96px -80px 40px 40px 176px 139px '../images/layout/sprite.png';
+  $80times80-x: 96px;
+  $80times80-y: 0px;
+  $80times80-offset-x: -96px;
+  $80times80-offset-y: 0px;
+  $80times80-width: 80px;
+  $80times80-height: 80px;
+  $80times80-total-width: 176px;
+  $80times80-total-height: 139px;
+  $80times80-image: '../images/layout/sprite.png';
+  $80times80: 96px 0px -96px 0px 80px 80px 176px 139px '../images/layout/sprite.png';
+
+  @mixin sprite-width($sprite) {
+    width: nth($sprite, 5);
+  }
+
+  @mixin sprite-height($sprite) {
+    height: nth($sprite, 6);
+  }
+
+  @mixin sprite-position($sprite) {
+    $sprite-offset-x: nth($sprite, 3);
+    $sprite-offset-y: nth($sprite, 4);
+    background-position: $sprite-offset-x  $sprite-offset-y;
+  }
+
+  @mixin sprite-image($sprite) {
+    background-image: url(nth($sprite, 9));
+  }
+
+  @mixin sprite($sprite) {
+    @include sprite-image($sprite);
+    @include sprite-position($sprite);
+    @include sprite-width($sprite);
+    @include sprite-height($sprite);
+  }

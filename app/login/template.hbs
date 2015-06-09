@@ -1,13 +1,15 @@
-<form {{action "authenticate" on="submit"}}>
-  {{#if loginErrorMessage}}
+<div class="container">
+  <form {{action "authenticate" on="submit"}}>
+    {{#if loginErrorMessage}}
     <span class="error">Error here</span>
-  {{/if}}
+    {{/if}}
 
-  <label for="login-identification">Email</label>
-  {{input id="login-identification" value=identification placeholder="Enter email" type="email" required="required"}}
+    <label for="login-identification">Email</label>
+    {{input id="login-identification" value=identification placeholder="Enter email" type="email" required="required"}}
 
-  <label for="login-password">Password</label>
-  {{input id="login-password" value=password placeholder="Enter password" type="password" required="required"}}
+    <label for="login-password">Password</label>
+    {{input id="login-password" value=password placeholder="Enter password" type="password" required="required"}}
 
-  <button>Login</button>
-</form>
+    <button>Login</button>
+  </form>
+</div>
