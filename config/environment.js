@@ -19,13 +19,17 @@ module.exports = function(environment) {
     },
 
     contentSecurityPolicy: {
+      'frame-src': "*.filepicker.io",
       'img-src': "'self' placeholdit.imgix.net placehold.it placekitten.com",
+      'script-src': "'self' 'unsafe-eval' *.filepicker.io",
       'style-src': "'self' 'unsafe-inline'"
-    },
-
-    'simple-auth': {
-      authorizer: 'simple-auth-authorizer:devise'
     }
+  };
+
+  ENV.filepickerKey = 'AwDRKk3xPRcGxYiYmNtp4z';
+
+  ENV['simple-auth'] = {
+    authorizer: 'simple-auth-authorizer:devise'
   };
 
   if (environment === 'development') {

@@ -1,6 +1,10 @@
-<form {{action "createGram" on="submit"}} id="new-gram-form">
-  {{#link-to 'grams' class="cancel-button"}}Cancel{{/link-to}}
+<h2>Add New Gram</h2>
 
-  {{input name="image" value=image}}
+<form {{action "createGram" on="submit"}} id="new-gram-form">
+  <label for="new-gram-image">Image URL:</label>
+  {{!-- {{input name="image" value=image id="new-gram-image"}} --}}
+  {{ember-filepicker options=filepickerOptions onSelection="fileSelected" onClose="onClose" onError="onError"}}
+
   <button disabled={{isDisabled}} type="submit">Create a gram</button>
+  {{#link-to 'grams' class="cancel-button"}}Cancel{{/link-to}}
 </form>
