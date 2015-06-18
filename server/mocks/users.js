@@ -34,7 +34,7 @@ module.exports = function(app) {
 
   usersRouter.post('/sign_in', function(req, res) {
     res.send({
-      email: 'test@mel.com',
+      email: 'email@domain.com',
       token: 'access_token'
     });
     res.status(200).end();

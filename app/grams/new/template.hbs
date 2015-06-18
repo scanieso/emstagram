@@ -1,10 +1,22 @@
 <h2>Add New Gram</h2>
 
 <form {{action "createGram" on="submit"}} id="new-gram-form">
-  <label for="new-gram-image">Image URL:</label>
-  {{!-- {{input name="image" value=image id="new-gram-image"}} --}}
-  {{ember-filepicker options=filepickerOptions onSelection="fileSelected" onClose="onClose" onError="onError"}}
+  <p>imageUrl: {{gram.imageUrl}}</p>
+  <p>imageFilename: {{gram.imageFilename}}</p>
 
+  {{#if gram.imageUrl}}
+    <img src={{gram.imageUrl}} alt="">
+  {{/if}}
+
+  <button {{action "mockFilePick"}}>mockFilePick</button>
+  <br>
+  <button {{action "setOpenPicker"}}>Add Image</button>
+  <br>
   <button disabled={{isDisabled}} type="submit">Create a gram</button>
+
   {{#link-to 'grams' class="cancel-button"}}Cancel{{/link-to}}
+
+  {{#if openPicker}}
+    {{ember-filepicker options=filepickerOptions onSelection="onSelection" onClose="onClose" onError="onError"}}
+  {{/if}}
 </form>

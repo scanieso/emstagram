@@ -6,21 +6,21 @@ module.exports = function(app) {
     res.send({
       'grams': [{
         id: 1,
-        image: 'http://placehold.it/300x300/eee',
+        image_url: 'http://placehold.it/300x300/eee',
         liked: true,
-        likesCount: 5,
+        likes_count: 5,
         title: 'My photo 1',
         user: 'scanieso'
       }, {
         id: 2,
-        image: 'http://placehold.it/300x300/eee',
-        likesCount: 5,
+        image_url: 'http://placehold.it/300x300/eee',
+        likes_count: 5,
         title: 'Another cool photo',
         user: 'scanieso'
       }, {
         id: 3,
-        image: 'http://placehold.it/300x300/eee',
-        likesCount: 5,
+        image_url: 'http://placehold.it/300x300/eee',
+        likes_count: 5,
         title: 'Someone else\'s photo here',
         user: 'harrypotter'
       }]
@@ -28,7 +28,7 @@ module.exports = function(app) {
   });
 
   gramsRouter.post('/', function(req, res) {
-    res.status(201).end();
+    res.send(req.body);
   });
 
   gramsRouter.get('/:id', function(req, res) {
