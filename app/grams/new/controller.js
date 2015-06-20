@@ -1,21 +1,25 @@
 import Ember from 'ember';
 
-const { computed, isBlank } = Ember;
+const { computed, isPresent } = Ember;
 
 export default Ember.Controller.extend({
-  gram: computed.alias('model'),
-
   filepicker: Ember.inject.service(),
 
   filepickerOptions: {
+    container: 'modal',
+    cropRatio: 1,
+    // debug: true,
+    imageDim: [500, 500],
     mimetypes: ['image/*'],
-    services: ['COMPUTER', 'WEBCAM', 'FACEBOOK', 'GMAIL', 'BOX', 'DROPBOX', 'FLICKR', 'INSTAGRAM']
+    services: ['COMPUTER', 'CONVERT']
   },
+
+  gram: computed.alias('model').readOnly(),
 
   isDisabled: computed.not('isSubmittable'),
 
-  isSubmittable: computed('gram.imageUrl', function() {
-    return !isBlank(this.get('gram.imageUrl'));
+  isSubmittable: computed('gram.imageUrl', 'gram.user', function() {
+    return isPresent(this.get('gram.imageUrl')) && isPresent(this.get('gram.user'));
   }),
 
   actions: {
@@ -42,13 +46,14 @@ export default Ember.Controller.extend({
 
     mockFilePick() {
       this.get('gram').set('blob', {
-        filename: 'image.png',
-        url: 'http://placekitten.com/150/151'
+        url: '/assets/images/placekitten.jpg'
       });
+
+      this.get('gram').set('user', 'temp');
     },
 
     onSelection(blob) {
-      this.get('gram').set('blob', blob);
+      this.get('gram').set('blob', blob[0]);
     },
 
     setOpenPicker() {

@@ -21,7 +21,7 @@ module.exports = function(environment) {
     contentSecurityPolicy: {
       'connect-src': "'self' ws://localhost:35729 ws://0.0.0.0:35729 http://0.0.0.0:4200/csp-report *.filepicker.io",
       'frame-src': "*.filepicker.io",
-      'img-src': "'self' placeholdit.imgix.net placehold.it placekitten.com",
+      'img-src': "'self' *.filepicker.io",
       'script-src': "'self' 'unsafe-eval' *.filepicker.io",
       'style-src': "'self' 'unsafe-inline'"
     }

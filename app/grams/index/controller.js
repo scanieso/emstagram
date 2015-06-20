@@ -1,5 +1,8 @@
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
-  grams: Ember.computed.alias('model')
+const { Controller, computed } = Ember;
+
+export default Controller.extend({
+  grams: computed.sort('model', 'gramsSorting'),
+  gramsSorting: ['createdAt:desc']
 });

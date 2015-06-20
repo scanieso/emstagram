@@ -3,32 +3,39 @@ module.exports = function(app) {
   var gramsRouter = express.Router();
 
   gramsRouter.get('/', function(req, res) {
+    var date = new Date();
+    date.setSeconds(date.getSeconds() - 3);
+
     res.send({
       'grams': [{
         id: 1,
-        image_url: 'http://placehold.it/300x300/eee',
+        created_at: new Date(date.setSeconds(date.getSeconds() + 1)),
+        image_url: '/assets/images/placeholder.png',
         liked: true,
         likes_count: 5,
-        title: 'My photo 1',
         user: 'scanieso'
       }, {
         id: 2,
-        image_url: 'http://placehold.it/300x300/eee',
+        created_at: new Date(date.setSeconds(date.getSeconds() + 1)),
+        image_url: '/assets/images/placeholder.png',
         likes_count: 5,
-        title: 'Another cool photo',
         user: 'scanieso'
       }, {
         id: 3,
-        image_url: 'http://placehold.it/300x300/eee',
+        created_at: new Date(date.setSeconds(date.getSeconds() + 1)),
+        image_url: '/assets/images/placeholder-wizard.png',
         likes_count: 5,
-        title: 'Someone else\'s photo here',
         user: 'harrypotter'
       }]
     });
   });
 
   gramsRouter.post('/', function(req, res) {
-    res.send(req.body);
+    var body = req.body;
+    body.gram.id = new Date().getTime();
+    body.gram.created_at = new Date();
+
+    res.send(body);
   });
 
   gramsRouter.get('/:id', function(req, res) {

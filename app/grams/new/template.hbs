@@ -8,7 +8,7 @@
     <img src={{gram.imageUrl}} alt="">
   {{/if}}
 
-  <button {{action "mockFilePick"}}>mockFilePick</button>
+  <button {{action "mockFilePick"}} class="mockFilePick">mockFilePick</button>
   <br>
   <button {{action "setOpenPicker"}}>Add Image</button>
   <br>
@@ -17,6 +17,10 @@
   {{#link-to 'grams' class="cancel-button"}}Cancel{{/link-to}}
 
   {{#if openPicker}}
-    {{ember-filepicker options=filepickerOptions onSelection="onSelection" onClose="onClose" onError="onError"}}
+    {{ember-filepicker
+      pickerOptions=filepickerOptions
+      onSelection="onSelection"
+      onClose="onClose"
+      onError="onError"}}
   {{/if}}
 </form>

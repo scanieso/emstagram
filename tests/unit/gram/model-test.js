@@ -9,8 +9,7 @@ moduleForModel('gram', 'Unit | Model | gram', {
 test('receives blob and converts to image metadata', function(assert) {
   let model = this.subject();
   let blob = {
-    url: 'url_here.png',
-    filename: 'Filename Here'
+    url: 'url_here.png'
   };
 
   Ember.run(function() {
@@ -18,5 +17,4 @@ test('receives blob and converts to image metadata', function(assert) {
   });
 
   assert.equal(model.get('imageUrl'), 'url_here.png', 'image\'s url is "url_here.png"');
-  assert.equal(model.get('imageFilename'), 'Filename Here', 'image\'s filename is "Filename Here"');
 });
