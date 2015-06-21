@@ -2,7 +2,7 @@ import Ember from 'ember';
 import DS from 'ember-data';
 
 const { computed } = Ember;
-const { Model, attr } = DS;
+const { Model, attr, belongsTo } = DS;
 
 export default Model.extend({
   blob: computed({
@@ -26,5 +26,5 @@ export default Model.extend({
   liked: attr('boolean', { defaultValue: false }),
   likesCount: attr('number', { defaultValue: 0 }),
   title: attr('string', { defaultValue: '' }),
-  user: attr('string')
+  user: belongsTo('user', { async: true })
 });

@@ -3,7 +3,13 @@ import AuthenticatedRouteMixin from 'simple-auth/mixins/authenticated-route-mixi
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   model() {
-    return this.store.createRecord('gram');
+    const gram = this.store.createRecord('gram');
+
+    this.get('session.currentUser').then(function(currentUser) {
+      gram.set('user', currentUser);
+    });
+
+    return gram;
   },
 
   deactivate() {

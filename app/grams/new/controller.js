@@ -8,8 +8,7 @@ export default Ember.Controller.extend({
   filepickerOptions: {
     container: 'modal',
     cropRatio: 1,
-    // debug: true,
-    imageDim: [500, 500],
+    imageMin: [500, 500],
     mimetypes: ['image/*'],
     services: ['COMPUTER', 'CONVERT']
   },
@@ -48,8 +47,6 @@ export default Ember.Controller.extend({
       this.get('gram').set('blob', {
         url: '/assets/images/placekitten.jpg'
       });
-
-      this.get('gram').set('user', 'temp');
     },
 
     onSelection(blob) {

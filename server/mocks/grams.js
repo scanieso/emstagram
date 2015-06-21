@@ -13,19 +13,19 @@ module.exports = function(app) {
         image_url: '/assets/images/placeholder.png',
         liked: true,
         likes_count: 5,
-        user: 'scanieso'
+        user_id: 1
       }, {
         id: 2,
         created_at: new Date(date.setSeconds(date.getSeconds() + 1)),
         image_url: '/assets/images/placeholder.png',
         likes_count: 5,
-        user: 'scanieso'
+        user_id: 1
       }, {
         id: 3,
         created_at: new Date(date.setSeconds(date.getSeconds() + 1)),
         image_url: '/assets/images/placeholder-wizard.png',
         likes_count: 5,
-        user: 'harrypotter'
+        user_id: 2
       }]
     });
   });

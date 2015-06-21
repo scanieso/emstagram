@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import DS from 'ember-data';
 import { module, test } from 'qunit';
 import startApp from 'emstagram/tests/helpers/start-app';
 import Pretender from 'pretender';
@@ -12,21 +13,31 @@ const GRAMS = {
     image_url: '/assets/images/placeholder.png',
     liked: true,
     likes_count: 5,
-    user: 'user_1'
+    user_id: 1
   }, {
     id: 2,
     created_at: new Date('06/14/15'),
     image_url: '/assets/images/placeholder.png',
     liked: false,
     likes_count: 10,
-    user: 'user_1'
+    user_id: 1
   }, {
     id: 3,
     created_at: new Date('06/13/15'),
     image_url: '/assets/images/placeholder.png',
     liked: false,
     likes_count: 15,
-    user: 'user_1'
+    user_id: 2
+  }]
+};
+
+const USERS = {
+  users: [{
+    id: 1,
+    username: 'scanieso'
+  }, {
+    id: 2,
+    username: 'harrypotter'
   }]
 };
 
@@ -42,6 +53,14 @@ module('Acceptance | grams', {
 
     server.post('/api/grams', function(request) {
       return [201, { 'Content-Type': 'application/json' }, request.requestBody];
+    });
+
+    server.get('/api/users/:id', function(request) {
+      const user = {
+        users: [USERS.users[request.params.id - 1]]
+      };
+      const response = JSON.stringify(user);
+      return [200, { 'Content-Type': 'application/json' }, response];
     });
   },
 
@@ -94,7 +113,7 @@ test('user can like a gram', function(assert) {
 });
 
 test('user can add new gram', function(assert) {
-  authenticateSession();
+  login();
 
   visit('/grams');
   andThen(function() {
@@ -123,8 +142,8 @@ test('user can add new gram', function(assert) {
   });
 });
 
-test('user fails to add new gram', function(assert) {
-  authenticateSession();
+test('user can fail to add new gram', function(assert) {
+  login();
 
   visit('/grams/new');
 

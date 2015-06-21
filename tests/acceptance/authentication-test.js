@@ -26,7 +26,7 @@ module('Acceptance | authentication', {
 });
 
 test('user can log in', function(assert) {
-  server.post('/users/sign_in', function(request) {
+  server.post('/api/users/sign_in', function(request) {
     const response = JSON.stringify({ token: 'fake_access_token' });
     return [200, { 'Content-Type': 'application/json' }, response];
   });
@@ -52,7 +52,7 @@ test('user can log in', function(assert) {
 test('user gets error when they use wrong password', function(assert) {
   visit('/grams');
 
-  server.post('/users/sign_in', function(request) {
+  server.post('/api/users/sign_in', function(request) {
     const response = JSON.stringify({ message: 'invalid_grant' });
     return [401, { 'Content-Type': 'application/json' }, response];
   });

@@ -30,7 +30,12 @@ module.exports = function(environment) {
   ENV.filepickerKey = 'AwDRKk3xPRcGxYiYmNtp4z';
 
   ENV['simple-auth'] = {
-    authorizer: 'simple-auth-authorizer:devise'
+    authorizer: 'simple-auth-authorizer:devise',
+    session: 'session:custom'
+  };
+
+  ENV['simple-auth-devise'] = {
+    serverTokenEndpoint: '/api/users/sign_in'
   };
 
   if (environment === 'development') {
