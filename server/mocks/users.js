@@ -4,9 +4,11 @@ module.exports = function(app) {
 
   var USERS = [{
     id: 1,
+    email: 'scanieso@gmail.com',
     username: 'scanieso'
   }, {
     id: 2,
+    email: 'harrypotter@gmail.com',
     username: 'harrypotter'
   }];
 
@@ -39,10 +41,18 @@ module.exports = function(app) {
   });
 
   usersRouter.post('/sign_in', function(req, res) {
+    var user;
+
+    if (req.body['user[email]'] === 'scanieso@gmail.com') {
+      user = USERS[0];
+    } else if (req.body['user[email]'] === 'harrypotter@gmail.com') {
+      user = USERS[1];
+    }
+
     res.send({
-      email: 'email@domain.com',
+      email: user.email,
       token: 'access_token',
-      user_id: 1
+      user_id: user.id
     });
     res.status(200).end();
   });
