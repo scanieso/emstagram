@@ -1,11 +1,14 @@
-<span class="gram__username">{{gram.user.username}}</span>
+<div class="gram__controls">
+  <strong class="gram__username">{{gram.user.username}}</strong>
+
+  {{#if isAuthenticated}}
+  <a href="#" class="gram__toggle-like" {{action "toggleLike"}}>
+    <span class="gram__liked">{{if like "Liked" "Like"}}</span>
+    <span class="gram__likes">({{gram.likes.length}})</span>
+    </a>
+  {{/if}}
+</div>
+
 <figure class="gram__figure">
   <img src="{{gram.imageUrl}}" alt="emstagram">
 </figure>
-
-{{#if isAuthenticated}}
-<button class="gram__toggle-like" {{action "toggleLike"}}>
-  <span class="gram__liked">{{if like "Liked" "Like"}}</span>
-  <span class="gram__likes">({{gram.likes.length}})</span>
-</button>
-{{/if}}

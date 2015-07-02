@@ -1,20 +1,20 @@
 <header id="app-header" class="app-header" role="banner">
   <div class="container">
-    <h1>{{#link-to 'grams'}}Emstagram{{/link-to}}</h1>
+    <h1 class="logo">{{#link-to 'grams'}}Emstagram{{/link-to}}</h1>
 
     <nav class="app-nav" role="navigation">
-      <ul>
+      <ul class="list-inline">
         {{#if session.isAuthenticated}}
-        <li>Hi {{session.currentUser.username}}</li>
+        <li>{{session.currentUser.username}}</li>
         <li>
-          {{#link-to 'grams.new' class="new-gram-button"}}Add New Gram{{/link-to}}
+          {{#link-to 'grams.new' class="new-gram-button"}}add new gram{{/link-to}}
         </li>
         <li>
-          <a href="#" {{action "invalidateSession"}}>Logout</a>
+          <a href="#" {{action "invalidateSession"}}>logout</a>
         </li>
         {{else}}
         <li>
-          {{#link-to "login" class="login"}}Login{{/link-to}}
+          {{#link-to "login" class="login"}}login{{/link-to}}
         </li>
         {{/if}}
       </ul>

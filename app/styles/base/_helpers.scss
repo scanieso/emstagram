@@ -21,3 +21,17 @@
 .is-hidden {
   @include hidden;
 }
+
+.list-inline {
+  @include list-clean;
+
+  > li {
+    display: inline;
+    margin-right: 10px;
+    vertical-align: middle;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

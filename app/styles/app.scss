@@ -1,5 +1,5 @@
 /*
-  Boilerplate CSS
+  Emstagram CSS
 */
 
 @charset "UTF-8";
@@ -24,6 +24,7 @@ $em-base: 16;
 @import "module/form/button";
 @import "module/form/input";
 @import "module/form/select";
+@import "module/grams";
 @import "module/header";
 @import "module/media";
 @import "module/section";

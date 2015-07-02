@@ -1,0 +1,34 @@
+.grams {
+  @include list-clean;
+}
+
+.gram {
+  @include vertical-rhythm(40);
+  position: relative;
+}
+
+.gram__controls {
+  position: absolute;
+  min-width: 115px;
+  right: 100%;
+  padding-right: 20px;
+  text-align: right;
+}
+
+.gram__figure {
+  border-radius: 10px;
+  margin: 0;
+  overflow: hidden;
+
+  img {
+    display: block;
+  }
+}
+
+.gram__username {
+  display: block;
+}
+
+.gram__toggle-like {
+  text-transform: lowercase;
+}

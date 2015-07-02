@@ -1,18 +1,26 @@
 // Colors
 // ---------------------------------------
 
-$blue: #225577;
+// Base
+$plum: #8E236B;
+$blue: #2983A6;
+$coral: #FF7259;
+$bright-blue: #4879FF;
 
+// Neutrals
 $gray: #999;
+$gray-lightest: #fafafa;
 
-$color-body: #000;
+// Palette
+$color-body: #333;
 $color-primary: $blue;
 
 
 // Fonts
 // ---------------------------------------
 
-$font-primary: "Open Sans", "Helvetica Neue", "Arial", sans-serif;
+$font-primary: "Source Sans Pro", "Helvetica Neue", "Arial", sans-serif;
+$font-display: "Pacifico", $font-primary;
 $font-mono: monospace, serif;
 
 
@@ -22,4 +30,4 @@ $font-mono: monospace, serif;
 $spacing-horizontal: 20px;
 $spacing-vertical: 20px;
 
-$page-width: 1200px;
+$page-width: 540px;

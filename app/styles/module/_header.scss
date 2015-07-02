@@ -1,10 +1,35 @@
 .app-header {
-  background: $color-primary;
-  color: #fff;
-  margin: 0 0 20px;
-  padding: 10px 0;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(#aaa, 0.2);
+  margin: 0 0 40px;
+  padding: 30px 0;
+
+  .container {
+    @include clearfix;
+  }
+
+  .logo {
+    float: left;
+    font-family: $font-display;
+    font-weight: normal;
+    margin-bottom: 5px;
+  }
 
   a {
-    color: inherit;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
+
+.app-nav {
+  float: right;
+  margin-top: 1em;
+
+  ul {
+    margin-bottom: 0;
   }
 }
