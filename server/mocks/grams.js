@@ -11,20 +11,19 @@ module.exports = function(app) {
         id: 1,
         created_at: new Date(date.setSeconds(date.getSeconds() + 1)),
         image_url: '/assets/images/placeholder.png',
-        liked: true,
-        likes_count: 5,
+        likes: [1],
         user_id: 1
       }, {
         id: 2,
         created_at: new Date(date.setSeconds(date.getSeconds() + 1)),
         image_url: '/assets/images/placeholder.png',
-        likes_count: 5,
+        likes: [],
         user_id: 1
       }, {
         id: 3,
         created_at: new Date(date.setSeconds(date.getSeconds() + 1)),
         image_url: '/assets/images/placeholder-wizard.png',
-        likes_count: 5,
+        likes: [],
         user_id: 2
       }]
     });

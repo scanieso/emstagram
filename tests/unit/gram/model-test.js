@@ -3,7 +3,7 @@ import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('gram', 'Unit | Model | gram', {
   // Specify the other units that are required for this test.
-  needs: ['model:user']
+  needs: ['model:like', 'model:user']
 });
 
 test('receives blob and converts to image metadata', function(assert) {

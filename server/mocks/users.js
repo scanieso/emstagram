@@ -47,6 +47,8 @@ module.exports = function(app) {
       user = USERS[0];
     } else if (req.body['user[email]'] === 'harrypotter@gmail.com') {
       user = USERS[1];
+    } else {
+      user = {};
     }
 
     res.send({

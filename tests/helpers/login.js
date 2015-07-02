@@ -14,7 +14,6 @@ export default Test.registerAsyncHelper('login', function(app) {
         resolve(applicationRoute.store.createRecord('user', {
           username: 'user_1'
         }));
-        reject('Nein');
       })
     });
   });

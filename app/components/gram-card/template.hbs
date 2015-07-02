@@ -5,10 +5,7 @@
 
 {{#if isAuthenticated}}
 <button class="gram__toggle-like" {{action "toggleLike"}}>
-  <span class="gram__liked">{{likeText}}</span>
+  <span class="gram__liked">{{if like "Liked" "Like"}}</span>
+  <span class="gram__likes">({{gram.likes.length}})</span>
 </button>
 {{/if}}
-
-<span class="gram__likes">{{gram.likes}}</span>
-
-{{yield}}
