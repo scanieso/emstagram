@@ -12,7 +12,7 @@ export default Test.registerAsyncHelper('login', function(app) {
     currentUser = PromiseObject.create({
       promise: new RSVP.Promise(function(resolve, reject) {
         resolve(applicationRoute.store.createRecord('user', {
-          username: 'user_1'
+          username: 'scanieso'
         }));
       })
     });

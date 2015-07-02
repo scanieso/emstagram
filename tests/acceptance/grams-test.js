@@ -91,6 +91,14 @@ module('Acceptance | grams', {
       const response = JSON.stringify(like);
       return [200, { 'Content-Type': 'application/json' }, response];
     });
+
+    server.delete('/api/likes/:id', function(request) {
+      const like = {
+        likes: [LIKES.likes[request.params.id - 1]]
+      };
+      const response = JSON.stringify(like);
+      return [200, { 'Content-Type': 'application/json' }, response];
+    });
   },
 
   afterEach() {
@@ -127,18 +135,18 @@ test('user can like a gram', function(assert) {
     assert.equal(find('.gram:eq(0) .gram__toggle-like').length, 0, 'like buttons are not visible if not authenticated');
   });
 
-  authenticateSession();
+  login();
   andThen(function() {
     const like = find('.gram:eq(0) .gram__liked');
     assert.equal(like.text(), 'Liked', 'liked gram\'s like button displays with text "Liked"');
   });
 
-  // click('.gram:eq(0) .gram__toggle-like');
+  click('.gram:eq(0) .gram__toggle-like');
 
-  // andThen(function() {
-  //   const like = find('.gram:eq(0) .gram__liked');
-  //   assert.equal(like.text(), 'Like', 'unliked gram\'s like button displays with text "Like"');
-  // });
+  andThen(function() {
+    const like = find('.gram:eq(0) .gram__liked');
+    assert.equal(like.text(), 'Like', 'unliked gram\'s like button displays with text "Like"');
+  });
 });
 
 test('user can add new gram', function(assert) {
@@ -176,12 +184,11 @@ test('user can fail to add new gram', function(assert) {
 
   visit('/grams/new');
 
-  // fillIn('#new-gram-form [name="image"]', '');
   click('#new-gram-form button[type="submit"]');
 
   andThen(function() {
     const disabledSubmitButton = find('#new-gram-form button[type="submit"]:disabled');
-    // assert.equal(disabledSubmitButton.length, 1, 'user cannot submit form');
+    assert.equal(disabledSubmitButton.length, 1, 'user cannot submit form');
 
     assert.equal(currentPath(), 'grams.new', 'user is not redirected without valid input');
   });
