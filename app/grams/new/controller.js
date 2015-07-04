@@ -8,7 +8,8 @@ export default Ember.Controller.extend({
   filepickerOptions: {
     container: 'modal',
     cropRatio: 1,
-    imageMin: [500, 500],
+    imageDim: [500, 500],
+    // imageMin: [500, 500],
     mimetypes: ['image/*'],
     services: ['COMPUTER', 'CONVERT']
   },
@@ -46,6 +47,7 @@ export default Ember.Controller.extend({
     mockFilePick() {
       this.get('gram').set('blob', {
         url: '/assets/images/placekitten.jpg'
+        // url: 'http://lorempixel.com/500/500'
       });
     },
 

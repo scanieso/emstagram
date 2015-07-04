@@ -82,10 +82,10 @@
 }
 
 @mixin vertical-rhythm ($value: $spacing-vertical) {
-  margin-top: $value + 0px;
+  margin-bottom: $value + 0px;
 
-  &:first-child {
-    margin-top: 0;
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 

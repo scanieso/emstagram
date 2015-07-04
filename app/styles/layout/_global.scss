@@ -1,5 +1,6 @@
 html, body {
   background: $gray-lightest;
+  background: #fff;
   height: 100%;
   min-height: 100%;
 }
@@ -19,6 +20,10 @@ body {
   color: $color-body;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+}
+
+.main {
+  padding-bottom: 40px;
 }
 
 .skip-link {

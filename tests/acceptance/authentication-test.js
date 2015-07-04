@@ -41,10 +41,10 @@ test('user can log in', function(assert) {
   visit('/login');
   fillIn('#login-identification', 'letmein@domain.com');
   fillIn('#login-password', 'gogogo123');
-  click('button:contains("login")');
+  click('.login-form button');
 
   andThen(function() {
-    const logout = find('a:contains("logout")');
+    const logout = find('.logout');
     assert.equal(logout.length, 1, 'this page shows a logout link when the session is authenticated');
   });
 });
@@ -60,7 +60,7 @@ test('user gets error when they use wrong password', function(assert) {
   visit('/login');
   fillIn('#login-identification', 'letmein@domain.com');
   fillIn('#login-password', 'wrongpassword');
-  click('button:contains("login")');
+  click('.login-form button');
 
   andThen(function() {
     const login = find('.app-nav .login');

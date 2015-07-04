@@ -7,10 +7,7 @@
         {{#if session.isAuthenticated}}
         <li>{{session.currentUser.username}}</li>
         <li>
-          {{#link-to 'grams.new' class="new-gram-button"}}add new gram{{/link-to}}
-        </li>
-        <li>
-          <a href="#" {{action "invalidateSession"}}>logout</a>
+          <a href="#" class="logout" {{action "invalidateSession"}}>logout</a>
         </li>
         {{else}}
         <li>

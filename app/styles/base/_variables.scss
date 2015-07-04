@@ -2,18 +2,22 @@
 // ---------------------------------------
 
 // Base
-$plum: #8E236B;
 $blue: #2983A6;
+$cobalt: #4879FF;
+$cobalt: #3366FF;
 $coral: #FF7259;
-$bright-blue: #4879FF;
+$plum: #993366;
+$teal: #1E8E77;
 
 // Neutrals
 $gray: #999;
+$gray-light: #ddd;
+$gray-lighter: #eee;
 $gray-lightest: #fafafa;
 
 // Palette
 $color-body: #333;
-$color-primary: $blue;
+$color-primary: $plum;
 
 
 // Fonts
@@ -27,7 +31,7 @@ $font-mono: monospace, serif;
 // Misc
 // ---------------------------------------
 
-$spacing-horizontal: 20px;
+$spacing-horizontal: 40px;
 $spacing-vertical: 20px;
 
 $page-width: 540px;

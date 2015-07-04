@@ -27,9 +27,24 @@
 
 .app-nav {
   float: right;
-  margin-top: 1em;
+  margin: 1em 0;
 
   ul {
-    margin-bottom: 0;
+    margin-top: 0;
+  }
+}
+
+@include bp($page-width) {
+  .app-header {
+    padding: 20px 0;
+    text-align: center;
+
+    .logo {
+      float: none;
+    }
+  }
+
+  .app-nav {
+    float: none;
   }
 }

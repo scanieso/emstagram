@@ -5,10 +5,12 @@
   <a href="#" class="gram__toggle-like" {{action "toggleLike"}}>
     <span class="gram__liked">{{if like "Liked" "Like"}}</span>
     <span class="gram__likes">({{gram.likes.length}})</span>
-    </a>
+  </a>
+  {{else}}
+  <span class="gram__likes">({{gram.likes.length}})</span>
   {{/if}}
 </div>
 
 <figure class="gram__figure">
-  <img src="{{gram.imageUrl}}" alt="emstagram">
+  <img class="gram__image" src="{{gram.imageUrl}}" alt="emstagram">
 </figure>

@@ -48,7 +48,9 @@ module.exports = function(app) {
     } else if (req.body['user[email]'] === 'harrypotter@gmail.com') {
       user = USERS[1];
     } else {
-      user = {};
+      res.status(401).send({
+        message: 'User not found.'
+      }).end();
     }
 
     res.send({

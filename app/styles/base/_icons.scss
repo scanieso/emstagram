@@ -1,4 +1,44 @@
 // Icons
 // ---------------------------------------
 
-.icon {}
+.icon {
+  &--xl {
+    font-size: 4em;
+  }
+
+  &--lg {
+    font-size: 2em;
+  }
+}
+
+.icon-camera {
+  border: em(2) solid;
+  border-radius: em(4);
+  display: inline-block;
+  height: 1.5em;
+  text-align: center;
+  width: 2em;
+
+  &:before { // flash
+    background: #fff;
+    border: em(2) solid;
+    border-bottom-width: 0;
+    border-radius: 4px;
+    content: "";
+    display: block;
+    height: 0.3em;
+    margin: -0.3em auto 0;
+    width: 50%;
+  }
+
+  &:after { // lens
+    @include vertical-center;
+    border: em(2) solid;
+    border-radius: 50%;
+    content: "";
+    display: block;
+    margin: 0 auto;
+    height: 1em;
+    width: 1em;
+  }
+}

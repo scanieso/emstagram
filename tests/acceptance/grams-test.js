@@ -168,7 +168,7 @@ test('user can add new gram', function(assert) {
   });
 
   // trigger onSelection action instead here
-  click('#new-gram-form button.mockFilePick');
+  click('#new-gram-form .mockFilePick');
   click('#new-gram-form button[type="submit"]');
 
   andThen(function() {

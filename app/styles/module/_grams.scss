@@ -8,20 +8,50 @@
 }
 
 .gram__controls {
-  position: absolute;
+  max-width: 150px;
   min-width: 115px;
-  right: 100%;
   padding-right: 20px;
+  position: absolute;
+  right: 100%;
   text-align: right;
 }
 
 .gram__figure {
   border-radius: 10px;
-  margin: 0;
+  margin: 0 0 $spacing-vertical;
+  padding-bottom: 100%;
+  position: relative;
   overflow: hidden;
+}
 
-  img {
-    display: block;
+.gram__image {
+  display: block;
+  margin-bottom: -100%;
+  width: 100%;
+}
+
+.gram__placeholder {
+  @include transition(border 0.2s);
+  border: 5px dashed $gray-lighter;
+  border-radius: 10px;
+  color: inherit;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+
+  .icon {
+    color: $gray-lighter;
+    margin-bottom: 5px;
+  }
+
+  &:hover,
+  &:focus {
+    border-color: $gray-light;
   }
 }
 
@@ -31,4 +61,24 @@
 
 .gram__toggle-like {
   text-transform: lowercase;
+}
+
+@include bp($page-width + (150 * 2)) {
+  .gram__controls {
+    margin-bottom: 5px;
+    max-width: none;
+    min-width: 0;
+    padding-right: 0;
+    position :static;
+    right: auto;
+    text-align: left;
+  }
+
+  .gram__username {
+    display: inline;
+  }
+
+  .gram__toggle-like {
+    float: right;
+  }
 }

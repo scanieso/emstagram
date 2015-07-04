@@ -20,10 +20,11 @@ module.exports = function(environment) {
 
     contentSecurityPolicy: {
       'connect-src': "'self' ws://localhost:35729 ws://0.0.0.0:35729 http://0.0.0.0:4200/csp-report *.filepicker.io",
+      'font-src': "'self' fonts.gstatic.com",
       'frame-src': "*.filepicker.io",
-      'img-src': "'self' *.filepicker.io",
+      'img-src': "'self' *.filepicker.io s3.amazonaws.com",
       'script-src': "'self' 'unsafe-eval' *.filepicker.io",
-      'style-src': "'self' 'unsafe-inline'"
+      'style-src': "'self' 'unsafe-inline' fonts.googleapis.com"
     }
   };
 

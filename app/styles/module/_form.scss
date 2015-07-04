@@ -1,0 +1,25 @@
+.form-group {
+  @include vertical-rhythm;
+
+  label,
+  .input-text {
+    display: block;
+  }
+
+  label {
+    margin-bottom: 5px;
+  }
+
+  .input-text {
+    width: 100%;
+  }
+}
+
+.form-submit {
+  @extend .form-group;
+  text-align: right;
+
+  .button {
+    width: 100%;
+  }
+}

@@ -1,15 +1,21 @@
 <div class="container">
-  <form {{action "authenticate" on="submit"}}>
+  <form class="login-form" {{action "authenticate" on="submit"}}>
     {{#if loginErrorMessage}}
-    <span class="error">Error here</span>
+    <p class="error">{{loginErrorMessage}}</p>
     {{/if}}
 
-    <label for="login-identification">Email</label>
-    {{input id="login-identification" value=identification placeholder="Enter email" type="email" required="required"}}
+    <div class="form-group">
+      <label for="login-identification">email</label>
+      {{input class="input-text" id="login-identification" value=identification type="email" required="required"}}
+    </div>
 
-    <label for="login-password">Password</label>
-    {{input id="login-password" value=password placeholder="Enter password" type="password" required="required"}}
+    <div class="form-group">
+      <label for="login-password">password</label>
+      {{input class="input-text" id="login-password" value=password type="password" required="required"}}
+    </div>
 
-    <button>Login</button>
+    <div class="form-submit">
+      <button class="button">Login</button>
+    </div>
   </form>
 </div>

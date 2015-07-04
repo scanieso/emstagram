@@ -1,26 +1,38 @@
 <h2>Add New Gram</h2>
 
 <form {{action "createGram" on="submit"}} id="new-gram-form">
-  <p>imageUrl: {{gram.imageUrl}}</p>
-  <p>imageFilename: {{gram.imageFilename}}</p>
+  <figure class="gram__figure">
+    {{#if gram.imageUrl}}
+    <img class="gram__image" src="{{gram.imageUrl}}" alt="emstagram">
+    {{else}}
+    <a href="#" class="gram__placeholder" {{action "setOpenPicker"}}>
+      <div class="vertical-center">
+        <div aria-hidden="true"><span class="icon icon-camera icon--xl"></span></div>
+        <div class="text-group">
+          <h3>Choose Image</h3>
+          <p><em>Click to add an image</em></p>
+        </div>
+      </div>
+    </a>
+    {{/if}}
+  </figure>
 
-  {{#if gram.imageUrl}}
-    <img src={{gram.imageUrl}} alt="">
-  {{/if}}
+  <div class="form-group">
+    <a href="#" class="button" {{action "setOpenPicker"}}>Choose Image</a>
 
-  <button {{action "mockFilePick"}} class="mockFilePick">mockFilePick</button>
-  <br>
-  <button {{action "setOpenPicker"}}>Add Image</button>
-  <br>
-  <button disabled={{isDisabled}} type="submit">Create a gram</button>
+    <a href="#" class="button button--secondary mockFilePick" {{action "mockFilePick"}}>Use Sample Image</a>
+  </div>
 
-  {{#link-to 'grams' class="cancel-button"}}Cancel{{/link-to}}
+  <div class="form-group">
+    {{#link-to 'grams' class="cancel-button"}}Cancel{{/link-to}}
+    <button class="button" disabled={{isDisabled}} type="submit">Create a gram</button>
+  </div>
 
   {{#if openPicker}}
-    {{ember-filepicker
-      pickerOptions=filepickerOptions
-      onSelection="onSelection"
-      onClose="onClose"
-      onError="onError"}}
+  {{ember-filepicker
+  pickerOptions=filepickerOptions
+  onSelection="onSelection"
+  onClose="onClose"
+  onError="onError"}}
   {{/if}}
 </form>
