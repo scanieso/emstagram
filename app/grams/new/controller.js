@@ -22,6 +22,8 @@ export default Ember.Controller.extend({
     return isPresent(this.get('gram.imageUrl')) && isPresent(this.get('gram.user'));
   }),
 
+  openPicker: false,
+
   actions: {
     createGram() {
       let self = this;
@@ -47,12 +49,12 @@ export default Ember.Controller.extend({
     mockFilePick() {
       this.get('gram').set('blob', {
         url: '/assets/images/placekitten.jpg'
-        // url: 'http://lorempixel.com/500/500'
       });
     },
 
     onSelection(blob) {
       this.get('gram').set('blob', blob[0]);
+      this.set('openPicker', false);
     },
 
     setOpenPicker() {

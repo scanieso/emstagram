@@ -17,15 +17,19 @@
     {{/if}}
   </figure>
 
-  <div class="form-group">
-    <a href="#" class="button" {{action "setOpenPicker"}}>Choose Image</a>
-
-    <a href="#" class="button button--secondary mockFilePick" {{action "mockFilePick"}}>Use Sample Image</a>
+  <div class="pull-right">
+    {{#if gram.imageUrl}}
+    <a href="#" {{action "setOpenPicker"}}>Choose New Image</a>
+    {{else}}
+    <a href="#" class="mockFilePick" {{action "mockFilePick"}}>Use Sample Image</a>
+    {{/if}}
   </div>
 
   <div class="form-group">
-    {{#link-to 'grams' class="cancel-button"}}Cancel{{/link-to}}
-    <button class="button" disabled={{isDisabled}} type="submit">Create a gram</button>
+    <ul class="list-inline">
+      <li>{{#link-to 'grams' class="cancel-button"}}Cancel{{/link-to}}</li>
+      <li><button class="button" disabled={{isDisabled}} type="submit">Create a gram</button></li>
+    </ul>
   </div>
 
   {{#if openPicker}}

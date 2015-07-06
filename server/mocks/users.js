@@ -12,15 +12,15 @@ module.exports = function(app) {
     username: 'harrypotter'
   }];
 
-  usersRouter.get('/', function(req, res) {
-    res.send({
-      'users': USERS
-    });
-  });
+  // usersRouter.get('/', function(req, res) {
+  //   res.send({
+  //     'users': USERS
+  //   });
+  // });
 
-  usersRouter.post('/', function(req, res) {
-    res.status(201).end();
-  });
+  // usersRouter.post('/', function(req, res) {
+  //   res.status(201).end();
+  // });
 
   usersRouter.get('/:id', function(req, res) {
     res.send({
@@ -28,17 +28,17 @@ module.exports = function(app) {
     });
   });
 
-  usersRouter.put('/:id', function(req, res) {
-    res.send({
-      'users': {
-        id: req.params.id
-      }
-    });
-  });
+  // usersRouter.put('/:id', function(req, res) {
+  //   res.send({
+  //     'users': {
+  //       id: req.params.id
+  //     }
+  //   });
+  // });
 
-  usersRouter.delete('/:id', function(req, res) {
-    res.status(204).end();
-  });
+  // usersRouter.delete('/:id', function(req, res) {
+  //   res.status(204).end();
+  // });
 
   usersRouter.post('/sign_in', function(req, res) {
     var user;

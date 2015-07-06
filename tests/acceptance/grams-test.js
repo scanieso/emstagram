@@ -11,22 +11,19 @@ const GRAMS = {
     id: 1,
     created_at: new Date('06/15/15'),
     image_url: '/assets/images/placeholder.png',
-    likes: [1],
-    likes_count: 5,
+    like_ids: [1],
     user_id: 1
   }, {
     id: 2,
     created_at: new Date('06/14/15'),
     image_url: '/assets/images/placeholder.png',
-    likes: [2],
-    likes_count: 10,
+    like_ids: [2],
     user_id: 1
   }, {
     id: 3,
     created_at: new Date('06/13/15'),
     image_url: '/assets/images/placeholder.png',
-    likes: [],
-    likes_count: 15,
+    like_ids: [],
     user_id: 2
   }]
 };
@@ -73,15 +70,6 @@ module('Acceptance | grams', {
       };
       const response = JSON.stringify(user);
       return [200, { 'Content-Type': 'application/json' }, response];
-    });
-
-    server.get('/api/likes', function(request) {
-      const response = JSON.stringify(LIKES);
-      return [200, { 'Content-Type': 'application/json' }, response];
-    });
-
-    server.post('/api/likes', function(request) {
-      return [201, { 'Content-Type': 'application/json' }, request.requestBody];
     });
 
     server.get('/api/likes/:id', function(request) {

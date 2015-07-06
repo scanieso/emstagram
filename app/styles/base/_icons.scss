@@ -42,3 +42,38 @@
     width: 1em;
   }
 }
+
+.icon-heart {
+  $size: 1em;
+
+  display: inline-block;
+  height: $size;
+  position: relative;
+  width: $size;
+
+  &:before,
+  &:after {
+    border: $size/4 solid;
+    border-bottom-width: $size/2;
+    border-radius: $size/2 $size/2 0 0;
+    border-top-width: $size/2;
+    content: "";
+    display: block;
+    height: 0;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 0;
+  }
+
+  &:before {
+    @include transform(rotate(-45deg));
+    left: $size/8/4;
+  }
+
+  &:after {
+    @include transform(rotate(45deg));
+    left: auto;
+    right: $size/8;
+  }
+}

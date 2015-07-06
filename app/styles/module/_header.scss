@@ -14,20 +14,11 @@
     font-weight: normal;
     margin-bottom: 5px;
   }
-
-  a {
-    text-decoration: none;
-
-    &:hover,
-    &:focus {
-      text-decoration: underline;
-    }
-  }
 }
 
 .app-nav {
   float: right;
-  margin: 1em 0;
+  margin: 1.3em 0 0;
 
   ul {
     margin-top: 0;

@@ -9,7 +9,7 @@ export default Ember.Component.extend({
   setLiked: undefined,
   setUnliked: undefined,
 
-  like: computed('gram.likes', function() {
+  like: computed('gram.likes.@each', function() {
     const currentUser = this.get('currentUser');
 
     const promise = this.get('gram.likes').then(function(likes) {
@@ -19,6 +19,18 @@ export default Ember.Component.extend({
     });
 
     return DS.PromiseObject.create({ promise });
+  }),
+
+  likesLabel: computed('gram.likes', {
+    get() {
+      this.get('gram.likes').then((likes) => {
+        const likesLabel = likes.length === 1 ? 'like' : 'likes';
+        this.set('likesLabel', likesLabel);
+      });
+    },
+    set(key, value) {
+      return value;
+    }
   }),
 
   showLikeButton: computed.alias('isAuthenticated'),

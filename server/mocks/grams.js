@@ -11,19 +11,19 @@ module.exports = function(app) {
         id: 1,
         created_at: new Date(date.setSeconds(date.getSeconds() + 1)),
         image_url: '/assets/images/placeholder.png',
-        likes: [1],
+        like_ids: [1],
         user_id: 1
       }, {
         id: 2,
         created_at: new Date(date.setSeconds(date.getSeconds() + 1)),
         image_url: '/assets/images/placeholder.png',
-        likes: [],
+        like_ids: [],
         user_id: 1
       }, {
         id: 3,
         created_at: new Date(date.setSeconds(date.getSeconds() + 1)),
         image_url: '/assets/images/placeholder-wizard.png',
-        likes: [],
+        like_ids: [],
         user_id: 2
       }]
     });
@@ -37,25 +37,25 @@ module.exports = function(app) {
     res.send(body);
   });
 
-  gramsRouter.get('/:id', function(req, res) {
-    res.send({
-      'grams': {
-        id: req.params.id
-      }
-    });
-  });
+  // gramsRouter.get('/:id', function(req, res) {
+  //   res.send({
+  //     'grams': {
+  //       id: req.params.id
+  //     }
+  //   });
+  // });
 
-  gramsRouter.put('/:id', function(req, res) {
-    res.send({
-      'grams': {
-        id: req.params.id
-      }
-    });
-  });
+  // gramsRouter.put('/:id', function(req, res) {
+  //   res.send({
+  //     'grams': {
+  //       id: req.params.id
+  //     }
+  //   });
+  // });
 
-  gramsRouter.delete('/:id', function(req, res) {
-    res.status(204).end();
-  });
+  // gramsRouter.delete('/:id', function(req, res) {
+  //   res.status(204).end();
+  // });
 
   app.use('/api/grams', gramsRouter);
 };

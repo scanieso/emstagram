@@ -52,6 +52,7 @@
   &:hover,
   &:focus {
     border-color: $gray-light;
+    text-decoration: none;
   }
 }
 
@@ -59,8 +60,36 @@
   display: block;
 }
 
+.gram__likes {
+  color: $gray;
+  display: block;
+}
+
 .gram__toggle-like {
+  color: $gray;
   text-transform: lowercase;
+  white-space: nowrap;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+
+  .icon {
+    color: $gray-light;
+    margin-right: 5px;
+    margin-top: -5px;
+    vertical-align: middle;
+  }
+
+  &.is-liked {
+    color: $color-primary;
+
+    .icon {
+      @include animation(pop 0.3s);
+      color: inherit;
+    }
+  }
 }
 
 @include bp($page-width + (150 * 2)) {
@@ -76,6 +105,11 @@
 
   .gram__username {
     display: inline;
+  }
+
+  .gram__likes {
+    display: inline;
+    margin-left: 5px;
   }
 
   .gram__toggle-like {

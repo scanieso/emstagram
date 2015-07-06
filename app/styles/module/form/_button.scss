@@ -27,6 +27,7 @@ button {
     background: lighten($color-primary, 5);
     border-color: lighten($color-primary, 5);
     border-bottom-color: darken($color-primary, 5);
+    text-decoration: none;
   }
 
   &:active {
