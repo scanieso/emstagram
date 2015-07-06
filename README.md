@@ -1,7 +1,6 @@
-# Emstagram
+# Emstagram [![Build Status](https://travis-ci.org/scanieso/emstagram.svg?branch=master)](https://travis-ci.org/scanieso/emstagram)
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This is a test-driven Ember.js remake of a popular photo sharing  application. This serves as a personal learning tool and Ember playground.
 
 ## Prerequisites
 
