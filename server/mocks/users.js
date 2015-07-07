@@ -56,7 +56,7 @@ module.exports = function(app) {
     res.send({
       email: user.email,
       token: 'access_token',
-      user_id: user.id
+      id: user.id
     });
     res.status(200).end();
   });
