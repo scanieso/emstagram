@@ -8,7 +8,7 @@ export default Controller.extend({
 
   actions: {
     setLiked(gram) {
-      let like = this.store.createRecord('like', {
+      const like = this.store.createRecord('like', {
         gram,
         user: this.get('session.currentUser')
       });
@@ -20,8 +20,8 @@ export default Controller.extend({
       });
     },
 
-    setUnliked(like) {
-      like.destroyRecord();
+    setUnliked(currentUserLike) {
+      currentUserLike.destroyRecord();
     }
   }
 });

@@ -5,6 +5,11 @@ const { computed } = Ember;
 const { Model, attr, belongsTo, hasMany } = DS;
 
 export default Model.extend({
+  createdAt: attr('date'),
+  imageUrl: attr('string'),
+  likes: hasMany('like', { async: true }),
+  user: belongsTo('user', { async: true }),
+
   blob: computed({
     get() {
       return {
@@ -19,10 +24,5 @@ export default Model.extend({
         imageUrl: this.get('imageUrl')
       };
     }
-  }),
-
-  createdAt: attr('date'),
-  imageUrl: attr('string'),
-  likes: hasMany('like', { async: true }),
-  user: belongsTo('user', { async: true })
+  })
 });

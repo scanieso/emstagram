@@ -107,11 +107,11 @@ test('visiting /grams shows 3 grams', function(assert) {
   visit('/grams');
 
   andThen(function() {
-    const grams = find('.gram');
-    assert.equal(grams.length, 3, 'there are 3 grams');
+    const $grams = find('.gram');
+    assert.equal($grams.length, 3, 'there are 3 grams');
 
-    const firstGramUrl = find('.gram:eq(0) .gram__figure img');
-    assert.equal(firstGramUrl.attr('src'), '/assets/images/placeholder.png', 'the first gram\'s url is "/assets/images/placeholder.png"');
+    const $firstGramImage = find('.gram:eq(0) .gram__figure img');
+    assert.equal($firstGramImage.attr('src'), '/assets/images/placeholder.png', 'the first gram\'s url is "/assets/images/placeholder.png"');
   });
 });
 
@@ -125,15 +125,15 @@ test('user can like a gram', function(assert) {
 
   login();
   andThen(function() {
-    const like = find('.gram:eq(0) .gram__liked');
-    assert.equal(like.text(), 'Liked', 'liked gram\'s like button displays with text "Liked"');
+    const $likeButton = find('.gram:eq(0) .gram__toggle-like');
+    assert.equal($.trim($likeButton.text()), 'Liked', 'liked gram\'s like button displays with text "Liked"');
   });
 
   click('.gram:eq(0) .gram__toggle-like');
 
   andThen(function() {
-    const like = find('.gram:eq(0) .gram__liked');
-    assert.equal(like.text(), 'Like', 'unliked gram\'s like button displays with text "Like"');
+    const $likeButton = find('.gram:eq(0) .gram__toggle-like');
+    assert.equal($.trim($likeButton.text()), 'Like', 'unliked gram\'s like button displays with text "Like"');
   });
 });
 
@@ -142,41 +142,39 @@ test('user can add new gram', function(assert) {
 
   visit('/grams');
   andThen(function() {
-    const grams = find('.gram');
-    assert.equal(grams.length, 3, 'page starts off with 3 grams');
+    const $grams = find('.gram');
+    assert.equal($grams.length, 3, 'page starts off with 3 grams');
   });
 
-  click('.new-gram-button');
+  click(':contains("Add New Gram")');
 
   andThen(function() {
     assert.equal(currentPath(), 'grams.new', 'user goes to /grams/new');
 
-    const backButton = find('.cancel-button');
-    assert.equal(backButton.length, 1, 'user can cancel adding new gram');
+    const $cancelButton = find('.cancel-button');
+    assert.equal($cancelButton.length, 1, 'user can cancel adding new gram');
   });
 
-  // trigger onSelection action instead here
-  click('#new-gram-form .mockFilePick');
+  click('#new-gram-form :contains("Use Sample Image")');
   click('#new-gram-form button[type="submit"]');
 
   andThen(function() {
     assert.equal(currentPath(), 'grams.index', 'user is redirected to /grams');
 
-    const grams = find('.gram');
-    assert.equal(grams.length, 4, 'page now shows 4 grams');
+    const $grams = find('.gram');
+    assert.equal($grams.length, 4, 'page now shows 4 grams');
   });
 });
 
 test('user can fail to add new gram', function(assert) {
   login();
-
   visit('/grams/new');
 
   click('#new-gram-form button[type="submit"]');
 
   andThen(function() {
-    const disabledSubmitButton = find('#new-gram-form button[type="submit"]:disabled');
-    assert.equal(disabledSubmitButton.length, 1, 'user cannot submit form');
+    const $disabledSubmitButton = find('#new-gram-form button[type="submit"]:disabled');
+    assert.equal($disabledSubmitButton.length, 1, 'user cannot submit form');
 
     assert.equal(currentPath(), 'grams.new', 'user is not redirected without valid input');
   });

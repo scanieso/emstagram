@@ -6,7 +6,7 @@ moduleFor('controller:grams/new', {
   // needs: ['controller:foo']
 });
 
-test('form may be submitted with valid input', function(assert) {
+test('isSubmittable', function(assert) {
   const controller = this.subject();
   const gram = Ember.Object.create();
   controller.set('model', gram);
@@ -15,28 +15,30 @@ test('form may be submitted with valid input', function(assert) {
     imageUrl: 'url_here',
     user: 'user_here'
   });
-  assert.equal(controller.get('isSubmittable'), true, 'form is submittable with image and user');
-  assert.equal(controller.get('isDisabled'), !controller.get('isSubmittable'), 'button is enabled when form is submittable');
+
+  assert.equal(controller.get('isSubmittable'), true, 'is true with imageUrl and user');
+
+  gram.set('imageUrl', '');
+  assert.equal(controller.get('isSubmittable'), false, 'is false without either imageUrl or user');
 });
 
-test('form cannot be submitted with invalid input', function(assert) {
+test('isDisabled', function(assert) {
   const controller = this.subject();
   const gram = Ember.Object.create();
   controller.set('model', gram);
 
-  gram.set('imageUrl', '');
-  assert.equal(controller.get('isSubmittable'), false, 'form is not submittable without image');
-  assert.equal(controller.get('isDisabled'), !controller.get('isSubmittable'), 'button is disabled when form is not submittable');
-
-  gram.setProperties({
-    imageUrl: 'has_image',
-    user: null
+  controller.get('gram').setProperties({
+    imageUrl: 'url_here',
+    user: 'user_here'
   });
 
-  assert.equal(controller.get('isSubmittable'), false, 'form is not submittable without user');
+  assert.equal(controller.get('isDisabled'), false, 'is false with imageUrl and user');
+
+  gram.set('user', null);
+  assert.equal(controller.get('isDisabled'), true, 'is true without either imageUrl or user');
 });
 
-test('onSelection sets blob on model', function(assert) {
+test('setImageUrl sets blob on model', function(assert) {
   assert.expect(3);
 
   const controller = this.subject();
@@ -51,5 +53,5 @@ test('onSelection sets blob on model', function(assert) {
     assert.deepEqual(value, blob[0]);
   };
 
-  controller.send('onSelection', blob);
+  controller.send('setImageUrl', blob);
 });
