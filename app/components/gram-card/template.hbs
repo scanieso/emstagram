@@ -3,9 +3,9 @@
   <span class="gram__likes">{{gram.likes.length}} <span class="gram__likes-label">{{likesLabel}}</span></span>
 
   {{#if isAuthenticated}}
-  <a href="#" class="gram__toggle-like {{if like "is-liked"}}" {{action "toggleLike"}}>
+  <a href="#" class="gram__toggle-like {{if currentUserLike "is-liked"}}" {{action "toggleLike"}}>
     <span class="icon icon-heart"></span>
-    <span class="gram__liked">{{if like "Liked" "Like"}}</span>
+    <span class="gram__liked">{{if currentUserLike "Liked" "Like"}}</span>
   </a>
   {{/if}}
 </div>

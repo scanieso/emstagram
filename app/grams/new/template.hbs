@@ -5,7 +5,7 @@
     {{#if gram.imageUrl}}
     <img class="gram__image" src="{{gram.imageUrl}}" alt="emstagram">
     {{else}}
-    <a href="#" class="gram__placeholder" {{action "setOpenPicker"}}>
+    <a href="#" class="gram__placeholder" {{action "showFilepicker"}}>
       <div class="vertical-center">
         <div aria-hidden="true"><span class="icon icon-camera icon--xl"></span></div>
         <div class="text-group">
@@ -19,9 +19,9 @@
 
   <div class="pull-right">
     {{#if gram.imageUrl}}
-    <a href="#" {{action "setOpenPicker"}}>Choose New Image</a>
+    <a href="#" {{action "showFilepicker"}}>Choose New Image</a>
     {{else}}
-    <a href="#" class="mockFilePick" {{action "mockFilePick"}}>Use Sample Image</a>
+    <a href="#" {{action "setSampleImage"}}>Use Sample Image</a>
     {{/if}}
   </div>
 
@@ -32,11 +32,10 @@
     </ul>
   </div>
 
-  {{#if openPicker}}
-  {{ember-filepicker
-  pickerOptions=filepickerOptions
-  onSelection="onSelection"
-  onClose="onClose"
-  onError="onError"}}
+  {{#if showFilepicker}}
+    {{ember-filepicker
+      pickerOptions=filepickerOptions
+      onSelection="setImageUrl"
+      onClose="closeFilepicker"}}
   {{/if}}
 </form>

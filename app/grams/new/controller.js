@@ -1,15 +1,14 @@
 import Ember from 'ember';
 
-const { computed, isPresent } = Ember;
+const { Controller, computed, isPresent } = Ember;
 
-export default Ember.Controller.extend({
-  filepicker: Ember.inject.service(),
+export default Controller.extend({
+  showFilepicker: false,
 
   filepickerOptions: {
     container: 'modal',
     cropRatio: 1,
     imageDim: [500, 500],
-    // imageMin: [500, 500],
     mimetypes: ['image/*'],
     services: ['COMPUTER', 'CONVERT']
   },
@@ -22,12 +21,10 @@ export default Ember.Controller.extend({
     return isPresent(this.get('gram.imageUrl')) && isPresent(this.get('gram.user'));
   }),
 
-  openPicker: false,
-
   actions: {
     createGram() {
-      let self = this;
-      let gram = this.get('gram');
+      const self = this;
+      const gram = this.get('gram');
 
       if (this.get('isSubmittable')) {
         gram.save().then(function() {
@@ -36,29 +33,23 @@ export default Ember.Controller.extend({
       }
     },
 
-    onClose() {
-      this.set('openPicker', false);
+    closeFilepicker() {
+      this.set('showFilepicker', false);
     },
 
-    onError(filepickerError) {
-      if (filepickerError.code !== 101) {
-        this.get('errors').pushObject(filepickerError.toString());
-      }
-    },
-
-    mockFilePick() {
+    setSampleImage() {
       this.get('gram').set('blob', {
         url: '/assets/images/placekitten.jpg'
       });
     },
 
-    onSelection(blob) {
+    setImageUrl(blob) {
       this.get('gram').set('blob', blob[0]);
-      this.set('openPicker', false);
+      this.set('showFilepicker', false);
     },
 
-    setOpenPicker() {
-      this.set('openPicker', true);
+    showFilepicker() {
+      this.set('showFilepicker', true);
     }
   }
 });

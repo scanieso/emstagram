@@ -6,10 +6,14 @@ const { computed } = Ember;
 export default Ember.Component.extend({
   classNames: ['gram'],
 
-  setLiked: undefined,
-  setUnliked: undefined,
+  currentUser: null,
+  isAuthenticated: false,
+  setLiked: null,
+  setUnliked: null,
 
-  like: computed('gram.likes.@each', function() {
+  showLikeButton: computed.alias('isAuthenticated'),
+
+  currentUserLike: computed('gram.likes.@each', function() {
     const currentUser = this.get('currentUser');
 
     const promise = this.get('gram.likes').then(function(likes) {
@@ -21,10 +25,10 @@ export default Ember.Component.extend({
     return DS.PromiseObject.create({ promise });
   }),
 
-  likesLabel: computed('gram.likes', {
+  likesLabel: computed('gram.likes.[]', {
     get() {
       this.get('gram.likes').then((likes) => {
-        const likesLabel = likes.length === 1 ? 'like' : 'likes';
+        const likesLabel = likes.get('length') === 1 ? 'like' : 'likes';
         this.set('likesLabel', likesLabel);
       });
     },
@@ -33,13 +37,11 @@ export default Ember.Component.extend({
     }
   }),
 
-  showLikeButton: computed.alias('isAuthenticated'),
-
   actions: {
     toggleLike() {
-      this.get('like').then((like) => {
-        if (Ember.isPresent(like)) {
-          this.sendAction('setUnliked', like);
+      this.get('currentUserLike').then((currentUserLike) => {
+        if (Ember.isPresent(currentUserLike)) {
+          this.sendAction('setUnliked', currentUserLike);
         } else {
           this.sendAction('setLiked', this.get('gram'));
         }
