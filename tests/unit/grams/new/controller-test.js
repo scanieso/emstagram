@@ -45,12 +45,12 @@ test('setImageUrl sets blob on model', function(assert) {
   const gram = Ember.Object.create();
   controller.set('model', gram);
 
-  const blob = [{ url: 'url_here' }];
+  const blob = { url: 'url_here' };
 
   gram.set = function(key, value) {
     assert.ok(true, 'set was called');
     assert.equal(key, 'blob');
-    assert.deepEqual(value, blob[0]);
+    assert.deepEqual(value, blob);
   };
 
   controller.send('setImageUrl', blob);

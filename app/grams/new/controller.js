@@ -7,6 +7,7 @@ export default Controller.extend({
 
   filepickerOptions: {
     container: 'modal',
+    cropForce: true,
     cropRatio: 1,
     imageDim: [500, 500],
     mimetypes: ['image/*'],
@@ -44,7 +45,7 @@ export default Controller.extend({
     },
 
     setImageUrl(blob) {
-      this.get('gram').set('blob', blob[0]);
+      this.get('gram').set('blob', blob);
       this.set('showFilepicker', false);
     },
 
