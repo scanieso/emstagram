@@ -14,14 +14,13 @@ EmObject.create({ user: EmObject.create({ username: 'user2' }) })
 ];
 
 const setLikes = function() {
-  const likes = [];
-  const usernames = arguments;
+  const usernames = Array.prototype.slice.call(arguments);
 
-  for (let i = 0, j = usernames.length; i < j; i++) {
-    likes.push(EmObject.create({
-      user: EmObject.create({ username: usernames[i] })
-    }));
-  }
+  const likes = usernames.map(function(username) {
+    return EmObject.create({
+      user: EmObject.create({ username })
+    });
+  });
 
   run(() => {
     this.set('gram.likes', PromiseObject.create({
