@@ -53,9 +53,9 @@ module.exports = function(app) {
   //   });
   // });
 
-  // gramsRouter.delete('/:id', function(req, res) {
-  //   res.status(204).end();
-  // });
+  gramsRouter.delete('/:id', function(req, res) {
+    res.status(204).end();
+  });
 
   app.use('/api/grams', gramsRouter);
 };
