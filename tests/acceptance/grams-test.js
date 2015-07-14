@@ -115,6 +115,17 @@ test('visiting /grams shows 3 grams', function(assert) {
   });
 });
 
+test('user can go to detail page', function(assert) {
+  login();
+  visit('/grams');
+
+  click('.gram:eq(0) .gram__details');
+
+  andThen(function() {
+    assert.equal(currentPath(), 'grams.gram');
+  });
+});
+
 test('user can like a gram', function(assert) {
   visit('/grams');
 

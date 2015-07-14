@@ -11,5 +11,11 @@
 </div>
 
 <figure class="gram__figure">
+  {{#link-to 'grams.gram' gram.id class="gram__details"}}
   <img class="gram__image" src="{{gram.imageUrl}}" alt="emstagram">
+  {{/link-to}}
 </figure>
+
+{{#if showDeleteButton}}
+  <button class="button gram__delete" {{action "delete"}}>Delete</button>
+{{/if}}

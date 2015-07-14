@@ -10,6 +10,8 @@ Router.map(function() {
 
   this.route('grams', function() {
     this.route('new');
+
+    this.route('gram', { path: '/:gram_id' });
   });
 });
 

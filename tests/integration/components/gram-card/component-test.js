@@ -125,3 +125,20 @@ test('likes label displays correctly', function(assert) {
   setLikes.call(this, 'hp123');
   assert.equal($likesLabel.text(), 'like', 'likes label is singular when likesCount is 1');
 });
+
+test('if delete action, delete button displays and can delete gram', function(assert) {
+  assert.expect(2);
+
+  this.render(hbs`
+    {{gram-card
+      gram=gram
+      delete="action1"
+      currentUser=currentUser
+      isAuthenticated=authenticated}}`);
+
+  const $deleteButton = this.$('.gram__delete');
+  assert.equal($deleteButton.length, 1, 'delete button is visible');
+
+  this.on('action1', gram => assert.ok(Ember.isPresent(gram), 'delete action was called'));
+  $deleteButton.click();
+});
